@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+static_root/
+media_root/
+local_settings.py
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Environment
+.env
+.env.local
+
+# Database
+*.db
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# Testing
+.coverage
+.pytest_cache/
+.mypy_cache/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# Project specific
+diary/__pycache__/
+diary/migrations/__pycache__/
+diary_project/__pycache__/
+__pycache__/
+
+# Secrets
+*.key
+*.pem
+*.crt
+secret_key.txt
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*.pid
+*.seed
+
+# Backup files
+*.bak
+*.backup
+*.tmp

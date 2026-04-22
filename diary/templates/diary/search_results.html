@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Результаты поиска</h1>
+
+<p class="lead">Поиск по запросу: "<strong>{{ query }}</strong>"</p>
+
+{% if entries %}
+    <div class="row">
+        {% for entry in entries %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ entry.title }}</h5>
+                        <p class="card-text text-muted">{{ entry.created_at|date:"d.m.Y H:i" }}</p>
+                        <a href="{% url 'diary:view_entry' entry.pk %}" class="btn btn-sm btn-outline-primary">Читать</a>
+                        <a href="{% url 'diary:edit_entry' entry.pk %}" class="btn btn-sm btn-outline-success">Редактировать</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        По запросу "<strong>{{ query }}</strong>" записей не найдено.
+    </div>
+    <a href="{% url 'diary:entry_list' %}" class="btn btn-primary">Вернуться к списку записей</a>
+{% endif %}
+{% endblock %}

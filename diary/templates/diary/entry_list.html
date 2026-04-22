@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Мои записи</h1>
+
+<div class="d-flex justify-content-between mb-3">
+    <form method="get" action="{% url 'diary:search_entries' %}" class="d-flex w-50">
+        <input type="text" name="q" class="form-control me-2" placeholder="Поиск по заголовкам и содержимому...">
+        <button type="submit" class="btn btn-outline-secondary">Найти</button>
+    </form>
+    <a href="{% url 'diary:create_entry' %}" class="btn btn-primary">Новая запись</a>
+</div>
+
+<div class="row">
+    {% for entry in entries %}
+    <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ entry.title }}</h5>
+                <p class="card-text text-muted">{{ entry.created_at|date:"d.m.Y H:i" }}</p>
+                <a href="{% url 'diary:view_entry' entry.pk %}" class="btn btn-sm btn-outline-primary">Читать</a>
+                <a href="{% url 'diary:edit_entry' entry.pk %}" class="btn btn-sm btn-outline-success">Редактировать</a>
+                <a href="{% url 'diary:delete_entry' entry.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>Записей пока нет.</p>
+    {% endfor %}
+</div>
+{% endblock %}
